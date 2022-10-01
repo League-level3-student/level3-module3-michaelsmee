@@ -1,5 +1,6 @@
 package _00_Intro_To_String_Methods;
 
+import java.util.ArrayList;
 import java.util.Base64;
 
 /*
@@ -69,33 +70,72 @@ public class _01_StringMethods {
     // You cannot assume there are no extra spaces around the name, but you can
     // assume there is only one space between the first and last name
     public static String lineLeader(String s1, String s2, String s3) {
-        
-    	for(int i=0; i<(s1.length()+s2.length() + s3.length()); i++ ){
-    		if()
+        String first = "";
+    	
+    	s1 = s1.trim();
+    	s2 = s2.trim();
+    	s3 = s3.trim();
+    	
+    	String[] name1 = s1.split(" "); 
+    	String[] name2 = s2.split(" "); 
+    	String[] name3 = s3.split(" "); 
+    	
+    	if(name1[1].compareTo(name2[1]) < 0 && name1[1].compareTo(name3[1])<0) {
+    		first = s1;
+    	}
+    	else if(name2[1].compareTo(name1[1]) < 0 && name2[1].compareTo(name3[1])<0) {
+    		first = s2;
+    	}
+    	else if(name3[1].compareTo(name1[1]) < 0 && name3[1].compareTo(name2[1])<0) {
+    		first = s3;
     	}
     	
-    	return null;
+    	return first;
     }
 
     // Return the sum of all numerical digits in the String
     public static int numeralSum(String s) {
-        return 0;
+        int num = 0;
+        ArrayList<Integer> values = new ArrayList();
+         
+        for(int i=0; i<s.length(); i++) {
+        	if(Character.isDigit(s.charAt(i))) {
+        		values.add(Integer.parseInt(s.charAt(i)+""));
+        	}
+        }
+        for(int i=0; i<values.size(); i++) {
+        	num+=values.get(i);
+        }
+    	
+    	return num;
     }
 
     // Return the number of times String substring appears in String s
     public static int substringCount(String s, String substring) {
-        return 0;
+        int count = 0;  
+       
+        int index = s.indexOf(substring);
+        while( index != -1 ) {
+            count++;
+            index = s.indexOf(substring, index + substring.length());
+        }
+        
+        
+    	return count;
     }
 
     // Call Utilities.encrypt at the bottom of this file to encrypt String s
     public static String encrypt(String s, char key) {
-        return null;
+    	byte[] plaintext = s.getBytes();
+    	byte key1 = (byte) key;
+        return Utilities.encrypt(plaintext, key1);
     }
 
     // Call Utilities.decrypt at the bottom of this file to decrypt the
     // cyphertext (encrypted text)
     public static String decrypt(String s, char key) {
-        return null;
+    	byte key1 = (byte) key;
+        return Utilities.decrypt(s, key1);
     }
 
     // Return the number of words in String s that end with String substring

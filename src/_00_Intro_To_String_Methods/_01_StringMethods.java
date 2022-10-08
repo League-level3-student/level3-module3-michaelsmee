@@ -141,14 +141,39 @@ public class _01_StringMethods {
     // Return the number of words in String s that end with String substring
     // You can assume there are no punctuation marks between words
     public static int wordsEndsWithSubstring(String s, String substring) {
-        return 0;
+    	int count =0;
+    	//int endLength = s.indexOf(substring);
+    	
+    	String[] values = s.split(" ");
+    	for(int x=0; x<values.length; x++) {
+    	for(int i=0; i<values[i].length(); i++) {
+    		if(values[i].substring(i-substring.length(),i).equals(substring)) {
+    			count ++;
+    	}	
+    	}
+    
+    }
+    	
+        return count;
     }
 
     // Given String s, return the number of characters between the first
     // occurrence of String substring and the final occurrence
     // You can assume that substring will appear at least twice
     public static int distance(String s, String substring) {
-        return 0;
+    	 int count = 0;  
+    	 int[] values [];
+    	 int length = 0;
+    	 
+         
+         int index = s.indexOf(substring);
+         while( index != -1 ) {
+             count++;
+             index = s.indexOf(substring, index + substring.length());
+             
+         }
+         
+    	return length;
     }
 
     // Return true if String s is a palindrome

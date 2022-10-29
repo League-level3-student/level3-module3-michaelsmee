@@ -145,12 +145,22 @@ public class _01_StringMethods {
     	//int endLength = s.indexOf(substring);
     	
     	String[] values = s.split(" ");
-    	for(int x=0; x<values.length; x++) {
-    	for(int i=0; i<values[i].length(); i++) {
-    		if(values[i].substring(i-substring.length(),i).equals(substring)) {
-    			count ++;
-    	}	
+    	int amount = values.length;
+    	//for(int x=0; x<values.length; x++) {
+    	for(String x:values) {
+    		if(x.length()< substring.length()) {
+    			continue;
+    		}
+    		String temp = x.substring(x.length()-substring.length(), x.length());
+    		if(temp.equals(substring)) {
+    			count+=1;
     	}
+    	
+    	//for(int i=0; i<amount-(substring.length()); i++) {
+    	//		if(values[i].substring(i,i+substring.length()).equals(substring)) {
+    	//		count ++;
+    	//		}	
+    	//}
     
     }
     	
@@ -169,17 +179,37 @@ public class _01_StringMethods {
          int index = s.indexOf(substring);
          while( index != -1 ) {
              count++;
-             index = s.indexOf(substring, index + substring.length());
+             index = s.indexOf(substring.length(), index + substring.length());
              
          }
          
-    	return length;
+    	return count;
     }
 
     // Return true if String s is a palindrome
     // palindromes are words or phrases are read the same forward as backward.
     // HINT: ignore/remove all punctuation and spaces in the String
     public static boolean palindrome(String s) {
+    	ArrayList<Character> al = new ArrayList<Character>();
+    	for(int i = 0; i<s.length(); i++) {
+    		if(Character.isAlphabetic(s.charAt(i))) {
+    			al.add(s.charAt(i));
+    		}
+    	}
+    	
+    	
+    	int max = al.size()-1;
+    	int i=0;
+    	while(i<=max ){
+    		System.out.println(i);
+    		System.out.println(max);
+    		if(al.get(max) != al.get(i)) {
+    			return false;
+    		}
+    		max-=1;
+    		i+=1;
+    	}
+    	
         return true;
     }
 }

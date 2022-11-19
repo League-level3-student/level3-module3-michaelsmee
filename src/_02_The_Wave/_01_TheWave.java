@@ -20,6 +20,11 @@ public class _01_TheWave {
      */
     
     public static ArrayList<String> wave(String str) {
+        int count = str.length();
+    	String [] result = new String[] {};
+        for(int i=0; i<count;  i++) {
+        	
+        }
         
         return null;
     }

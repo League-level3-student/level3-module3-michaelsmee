@@ -170,18 +170,11 @@ public class _01_StringMethods {
     // Given String s, return the number of characters between the first
     // occurrence of String substring and the final occurrence
     // You can assume that substring will appear at least twice
-    public static int distance(String s, String substring) {
+    public static int distance(String s, String substring1) {
     	 int count = 0;  
-    	 int[] values [];
-    	 int length = 0;
-    	 
          
-         int index = s.indexOf(substring);
-         while( index != -1 ) {
-             count++;
-             index = s.indexOf(substring.length(), index + substring.length());
-             
-         }
+         count= s.lastIndexOf(substring1)-s.indexOf(substring1)-substring1.length();
+         
          
     	return count;
     }
@@ -190,12 +183,14 @@ public class _01_StringMethods {
     // palindromes are words or phrases are read the same forward as backward.
     // HINT: ignore/remove all punctuation and spaces in the String
     public static boolean palindrome(String s) {
+    	s=s.toLowerCase();
     	ArrayList<Character> al = new ArrayList<Character>();
     	for(int i = 0; i<s.length(); i++) {
     		if(Character.isAlphabetic(s.charAt(i))) {
     			al.add(s.charAt(i));
     		}
     	}
+    
     	
     	
     	int max = al.size()-1;

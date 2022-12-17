@@ -21,11 +21,18 @@ public class _01_TheWave {
     
     public static ArrayList<String> wave(String str) {
         int count = str.length();
-    	String [] result = new String[] {};
+    	ArrayList<String> result = new ArrayList<String>();
+    	int start = 0;
+    	int end = 1;
         for(int i=0; i<count;  i++) {
+        	if(Character.isAlphabetic(str.charAt(i))) {
+        	result.add(str.substring(0, start) + str.substring(start,end).toUpperCase() + str.substring(end));
         	
         }
-        
-        return null;
+        	start++;
+        	end++;
+        }
+        System.out.println(result);
+        return result;
     }
 }
